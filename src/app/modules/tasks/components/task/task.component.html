@@ -1,0 +1,43 @@
+<div class="d-flex justify-content-center align-items-center" style="height: 80vh;">
+    <div class="sign-up-card  bg-secondary p-4 rounded">
+        <h5 class="d-flex justify-content-center align-items-center text-white">Add User</h5>
+        <form (ngSubmit)="onSubmit(taskForm)" #taskForm="ngForm">
+            <div class="form-group mt-2">
+                <label for="Title">Title</label>
+                <input type="text" class="form-control" id="Title" placeholder="Enter title" ngModel name="title"
+                    required [(ngModel)]="taskFormValue.title" />
+            </div>
+            <div class="form-group mt-2">
+                <label for="Description">Description</label>
+                <textarea type="text" class="form-control" id="Description" placeholder="Enter description" ngModel
+                    name="description" required [(ngModel)]="taskFormValue.description"></textarea>
+            </div>
+            <div class="form-group mt-2">
+                <label for="Deadline">Deadline</label>
+                <input type="date" class="form-control" id="Deadline" ngModel name="deadline" required
+                    [(ngModel)]="taskFormValue.deadline" />
+            </div>
+            <div class="form-group mt-2">
+                <label for="Status">Status</label>
+                <select class="form-control" id="Status" placeholder="Enter Status" ngModel name="status" require
+                    [(ngModel)]="taskFormValue.status">
+                    <option [value]="'select'">Select status</option>
+                    <option [value]="status.value" *ngFor="let status of taskStatuses">{{status.label}}</option>
+                </select>
+            </div>
+            <div class="form-group mt-2">
+                <label for="Assigner">Assigner</label>
+                <ng-select [items]="organizationUsers" bindLabel="username" bindValue="id" [multiple]="true" required
+                    ngModel name="assignedUsers" placeholder="Choose Users" [(ngModel)]="taskFormValue.assignedUsers">
+                </ng-select>
+            </div>
+
+            <div class="d-flex justify-content-between align-items-center mt-2">
+                <a routerLink="/main/task/list" class="text-white">Back to task list</a>
+                <button [disabled]="!taskForm.valid" type="submit" class="btn btn-success">{{editMode?
+                    'Edit':'Add'}}</button>
+            </div>
+        </form>
+    </div>
+
+</div>

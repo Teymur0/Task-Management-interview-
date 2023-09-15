@@ -1,0 +1,16 @@
+<div class="card bg-secondary text-white">
+    <div class="card-body">
+        <h5 class="card-title"> {{task.title}} (Deadline: {{task.deadline | date : 'dd/MM/yyyy'}})</h5>
+        <p class="card-title">Creator : {{task.creator}} (OrganizationName : {{task.organizationName}})</p>
+        <p class="card-title">Description : {{task.description}}</p>
+
+        <div class="mb-1"><b>Assigners</b></div>
+        <span *ngFor="let assigner of task.assignedUsers">
+            {{assigner}},
+        </span>
+        <div class="d-flex justify-content-between align-items-center mt-2">
+            <p class="card-text mb-0 pb-0"><i class="text-dark">Status : {{taskStatusEnum[task.status]}}</i></p>
+            <button class="btn btn-success mx-2" routerLink="/main/task/{{task.creator}}">Edit</button>
+        </div>
+    </div>
+</div>

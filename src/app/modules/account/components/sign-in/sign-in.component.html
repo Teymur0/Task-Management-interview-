@@ -1,0 +1,30 @@
+<div class="d-flex justify-content-center align-items-center" style="height: 80vh;">
+    <div class="sign-in-card bg-secondary p-4 rounded">
+        <h4 class="d-flex justify-content-center align-items-center text-white">Sign In</h4>
+        <form (ngSubmit)="onSubmit(singIn)" #singIn="ngForm">
+            <div class="form-group" *ngIf="signInType==='email'">
+                <label for="userName" class="text-white">User Name</label>
+                <input type="text" class="form-control" id="userName" placeholder="Enter User name" ngModel
+                    name="userName" required>
+            </div>
+            <div class="form-group " *ngIf="signInType==='username'">
+                <label for="userName"  class="text-white">Email address</label>
+                <input type="email" class="form-control" id="userName" placeholder="Enter email" ngModel name="email"
+                    required email>
+            </div>
+            <button class="btn btn-success mt-2 " (click)="changeSignInType()">swtich to {{signInType}}</button>
+            <div class="form-group mt-2" >
+                <label for="password"  class="text-white">Password</label>
+                <input type="password" class="form-control" id="password" placeholder="Password" minlength="6" ngModel
+                    name="password" required>
+            </div>
+            <small class="text-white">Defeault password:123456</small>
+            <div class="d-flex justify-content-between align-items-center">
+                <a routerLink="/sign-up"  class="text-white">Sign Up</a>
+                <button [disabled]="!singIn.valid" type="submit" class="btn btn-success">Sign in</button>
+            </div>
+
+        </form>
+    </div>
+
+</div>

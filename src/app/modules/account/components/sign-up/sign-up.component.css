@@ -1,0 +1,10 @@
+.sign-up-card {
+  width: 20%;
+}
+input.ng-invalid.ng-touched {
+  border: 2px solid red;
+}
+
+label {
+  color: white;
+}

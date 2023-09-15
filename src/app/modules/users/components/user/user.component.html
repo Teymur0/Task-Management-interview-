@@ -1,0 +1,33 @@
+<div class="d-flex justify-content-center align-items-center" style="height: 80vh;">
+    <div class="sign-up-card bg-secondary p-4 rounded">
+        <h4 class="d-flex justify-content-center align-items-center text-white">Add User</h4>
+        <form (ngSubmit)="onSubmit(userForm)" #userForm="ngForm">
+            <div class="form-group mt-2">
+                <label for="firstName">First Name</label>
+                <input type="text" class="form-control" id="firstName" placeholder="Enter first Name" ngModel
+                    name="firstName" required [(ngModel)]="userFormValue.firstName">
+            </div>
+            <div class="form-group mt-2">
+                <label for="lasName">Last Name</label>
+                <input type="text" class="form-control" id="lasName" placeholder="Enter last name" ngModel
+                    name="lastName" required [(ngModel)]="userFormValue.lastName">
+            </div>
+            <div class="form-group mt-2">
+                <label for="exampleInputEmail1">User Name</label>
+                <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Enter User name" ngModel
+                    name="username" required [(ngModel)]="userFormValue.username">
+            </div>
+            <div class="form-group mt-2">
+                <label for="email">Email address</label>
+                <input type="email" class="form-control" id="email" placeholder="Enter email" ngModel name="email"
+                    required email [(ngModel)]="userFormValue.email">
+            </div>
+            <div class="d-flex justify-content-between align-items-center mt-2">
+                <a routerLink="/main/user/list" class="text-white">Back to sign Users</a>
+                <button [disabled]="!userForm.valid" type="submit" class="btn btn-success">{{editMode?
+                    'Edit':'Add'}}</button>
+            </div>
+        </form>
+    </div>
+
+</div>
